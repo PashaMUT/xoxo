@@ -1,21 +1,24 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-export default function Intro({ onFinish }: { onFinish: () => void }) {
+type IntroProps = {
+    onFinish?: () => void; // делаем необязательным
+};
+
+export default function Intro({ onFinish }: IntroProps) {
     const [showIntro, setShowIntro] = useState(true);
+    const finishTimer = useRef<NodeJS.Timeout | null>(null); // сохраняем таймер в ref
+    const hideTimer = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        const timer = setTimeout(() => setShowIntro(false), 2000); // показываем интро 4с
-        const finishTimer = setTimeout(() => onFinish(), 4000); // после 4.5с вызываем onFinish
+        hideTimer.current = setTimeout(() => setShowIntro(false), 2000); // показываем интро 2с
+        finishTimer.current = setTimeout(() => onFinish?.(), 4000); // после 4с вызываем onFinish
+
         return () => {
-            clearTimeout(timer);
-            clearTimeout(finishTimer);
+            if (hideTimer.current) clearTimeout(hideTimer.current);
+            if (finishTimer.current) clearTimeout(finishTimer.current);
         };
     }, [onFinish]);
-
-    useEffect(() => {
-        return () => clearTimeout(finishTimer);
-    }, []);
 
     return (
         <AnimatePresence>
@@ -36,7 +39,7 @@ export default function Intro({ onFinish }: { onFinish: () => void }) {
                     }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }} // плавный fade-out
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                 >
                     {/* X */}
