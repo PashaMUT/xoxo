@@ -1,7 +1,7 @@
 import React from "react";
-import video1 from "../assets/service1.mp4";
-import video2 from "../assets/service.mp4";
-import video3 from "../assets/service3.mp4";
+import video1 from "../../public/videos/service1.mp4";
+import video2 from "../../public/videos/service.mp4";
+import video3 from "../../public/videos/service3.mp4";
 
 const Services: React.FC = () => {
     return (
