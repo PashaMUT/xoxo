@@ -824,6 +824,18 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+
+.intro-overlay {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.x-letter, .o-letter {
+  will-change: transform, opacity;
+  text-rendering: optimizeSpeed;
+}
+
 /* ============ RESPONSIVE DESIGN ============ */
 
 /* Tablets (768px - 1024px) */
