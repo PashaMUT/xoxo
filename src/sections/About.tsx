@@ -21,15 +21,15 @@ const About: React.FC = () => {
                             <div className="stat-label">Лет опыта</div>
                         </div>
                         <div className="stat-item">
-                            <div className="stat-number">100+</div>
+                            <div className="stat-number">1000+</div>
                             <div className="stat-label">Довольных клиентов</div>
                         </div>
                         <div className="stat-item">
-                            <div className="stat-number">10+</div>
+                            <div className="stat-number">50+</div>
                             <div className="stat-label">Сертификатов</div>
                         </div>
                         <div className="stat-item">
-                            <div className="stat-number">99%</div>
+                            <div className="stat-number">100%</div>
                             <div className="stat-label">Положительных отзывов</div>
                         </div>
                     </div>

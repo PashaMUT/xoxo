@@ -13,61 +13,46 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="header">
-            <div className="header-container">
-                {/* Лого */}
-                <img src={logo} alt="Логотип" className="header-logo" />
+        <>
+            <header className="header">
+                <div className="header-container">
+                    <img src={logo} alt="Логотип" className="header-logo" />
 
-                {/* Навигация */}
-                <nav className="header-nav">
-                    <a
-                        href="#about"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection('about');
-                        }}
-                    >
-                        Обо мне
-                    </a>
-                    <a
-                        href="#services"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection('services');
-                        }}
-                    >
-                        Услуги
-                    </a>
-                    <a
-                        href="#advantages"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection('advantages');
-                        }}
-                    >
-                        Преимущества
-                    </a>
-                    <a
-                        href="#reviews"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection('reviews');
-                        }}
-                    >
-                        Отзывы
-                    </a>
+                    <nav className="header-nav">
+                        <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>
+                            Обо мне
+                        </a>
+                        <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }}>
+                            Услуги
+                        </a>
+                        <a href="#advantages" onClick={(e) => { e.preventDefault(); scrollToSection('advantages'); }}>
+                            Преимущества
+                        </a>
+                        <a href="#reviews" onClick={(e) => { e.preventDefault(); scrollToSection('reviews'); }}>
+                            Отзывы
+                        </a>
 
-                    {/* Кнопка "Связаться со мной" */}
-                    <a
-                        href="https://instagram.com/xoxo___brows"
-                        className="contact-button"
-                        target="_blank" rel="noopener noreferrer"
-                    >
-                        Связаться со мной
-                    </a>
-                </nav>
-            </div>
-        </header>
+                        {/* Кнопка только для десктопа */}
+                        <a
+                            href="https://instagram.com/xoxo___brows"
+                            className="contact-button desktop-only"
+                            target="_blank" rel="noopener noreferrer"
+                        >
+                            Связаться со мной
+                        </a>
+                    </nav>
+                </div>
+            </header>
+
+            {/* Плавающая кнопка для мобильных */}
+            <a
+                href="https://instagram.com/xoxo___brows"
+                className="contact-button floating-contact-button"
+                target="_blank" rel="noopener noreferrer"
+            >
+                Связаться
+            </a>
+        </>
     );
 };
 

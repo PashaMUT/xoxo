@@ -72,7 +72,7 @@ const Reviews: React.FC = () => {
                             className="carousel-track"
                             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                         >
-                            {reviews.map((review, index) => (
+                            {reviews.map((review, _index) => (
                                 <div key={review.id} className="carousel-slide">
                                     <div className="review-image-container">
                                         <img

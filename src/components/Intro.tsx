@@ -13,6 +13,10 @@ export default function Intro({ onFinish }: { onFinish: () => void }) {
         };
     }, [onFinish]);
 
+    useEffect(() => {
+        return () => clearTimeout(finishTimer);
+    }, []);
+
     return (
         <AnimatePresence>
             {showIntro && (

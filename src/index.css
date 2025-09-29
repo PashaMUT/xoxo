@@ -19,6 +19,45 @@ body {
   overflow-x: hidden;
 }
 
+
+/* Дополнительные стили для плавающей кнопки */
+.floating-contact-button {
+  /* Добавляем микро-анимацию */
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Эффект при скролле */
+.floating-contact-button.scrolled {
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+}
+
+/* Затемнение фона при наведении */
+.floating-contact-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.floating-contact-button:hover::after {
+  opacity: 1;
+}
+
 /* ============ HEADER STYLES ============ */
 .header {
   position: fixed;
@@ -899,28 +938,48 @@ body {
 
 /* Small Tablets (768px and below) */
 @media (max-width: 768px) {
-  .header-container {
-    padding: 0 20px;
-    height: 70px;
-  }
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 10px;
+      gap: 15px;
+    }
 
-  .header-logo {
-    width: 50px;
-    height: 50px;
-  }
+    .header-logo {
+      width: 45px;
+      height: 45px;
+      flex-shrink: 0;
+    }
 
-  .header-nav {
-    gap: 20px;
-  }
+    .header-nav {
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-  .header-nav a {
-    font-size: 0.9rem;
-  }
+    .nav-link {
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      white-space: nowrap;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
 
-  .contact-button {
-    padding: 8px 16px !important;
-    font-size: 0.85rem;
-    margin-left: 5px;
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .nav-link::after {
+      display: none;
+    }
+
+    .contact-button {
+      font-size: 0.75rem;
+      padding: 6px 12px !important;
+      margin-left: 0;
+      white-space: nowrap;
+    }
   }
 
   .hero {
@@ -1059,10 +1118,69 @@ body {
     width: 50px;
     height: 50px;
   }
+
+  .header-nav .contact-button {
+    display: none;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Показываем плавающую кнопку */
+  .floating-contact-button {
+    display: flex !important;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f06292, #e91e63);
+    color: white !important;
+    padding: 15px 20px !important;
+    border-radius: 25px;
+    font-weight: 600 !important;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(240, 98, 146, 0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .floating-contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(240, 98, 146, 0.6);
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    animation: none;
+  }
+
+  .floating-contact-button:active {
+    transform: translateY(0);
+  }
 }
+
 
 /* Mobile (480px and below) */
 @media (max-width: 480px) {
+
+  .floating-contact-button {
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 16px !important;
+    font-size: 0.8rem;
+  }
+
+  .header-nav {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+  }
+
   .header-container {
     padding: 0 15px;
     height: 60px;
@@ -1254,6 +1372,14 @@ body {
 
 /* Small Mobile (360px and below) */
 @media (max-width: 360px) {
+
+  .floating-contact-button {
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 14px !important;
+    font-size: 0.75rem;
+  }
+
   .header-nav {
     gap: 12px;
   }
@@ -1292,124 +1418,136 @@ body {
     width: 40px;
     height: 40px;
   }
-}
 
-/* ============ UTILITY CLASSES ============ */
-.text-center {
-  text-align: center;
-}
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.inset-0 {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.bg-black\/50 {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.text-white {
-  color: white;
-}
-
-/* Дополнительные эффекты для кнопки */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+  /* ============ UTILITY CLASSES ============ */
+  .text-center {
+    text-align: center;
   }
-  50% {
-    box-shadow: 0 4px 20px rgba(240, 98, 146, 0.6);
+
+  .mt-4 {
+    margin-top: 1rem;
   }
-  100% {
-    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+
+  .text-xl {
+    font-size: 1.25rem;
   }
-}
 
-.contact-button {
-  animation: pulse 2s infinite;
-}
-
-.contact-button:hover {
-  animation: none;
-}
-
-/* Анимации для секций */
-.about-text h2 {
-  animation: fadeInUp 0.8s ease;
-}
-
-.about-description {
-  animation: fadeInUp 0.8s ease 0.2s both;
-}
-
-.stat-item {
-  animation: fadeInUp 0.8s ease 0.4s both;
-}
-
-.stat-item:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.stat-item:nth-child(3) {
-  animation-delay: 0.6s;
-}
-
-.stat-item:nth-child(4) {
-  animation-delay: 0.7s;
-}
-
-.master-photo-container {
-  animation: fadeInUp 0.8s ease 0.3s both;
-}
-
-.advantage-card {
-  animation: fadeInUp 0.6s ease both;
-}
-
-.advantage-card:nth-child(1) { animation-delay: 0.1s; }
-.advantage-card:nth-child(2) { animation-delay: 0.2s; }
-.advantage-card:nth-child(3) { animation-delay: 0.3s; }
-.advantage-card:nth-child(4) { animation-delay: 0.4s; }
-
-.advantages-title {
-  animation: fadeInUp 0.8s ease;
-}
-
-.reviews-carousel {
-  animation: fadeIn 0.8s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  .font-medium {
+    font-weight: 500;
   }
-  to {
-    opacity: 1;
-  }
-}
 
-.carousel-slide {
-  animation: fadeIn 0.5s ease;
+  .relative {
+    position: relative;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .bg-black\/50 {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .text-white {
+    color: white;
+  }
+
+  /* Дополнительные эффекты для кнопки */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+    }
+    50% {
+      box-shadow: 0 4px 20px rgba(240, 98, 146, 0.6);
+    }
+    100% {
+      box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+    }
+  }
+
+  .contact-button {
+    animation: pulse 2s infinite;
+  }
+
+  .contact-button:hover {
+    animation: none;
+  }
+
+  /* Анимации для секций */
+  .about-text h2 {
+    animation: fadeInUp 0.8s ease;
+  }
+
+  .about-description {
+    animation: fadeInUp 0.8s ease 0.2s both;
+  }
+
+  .stat-item {
+    animation: fadeInUp 0.8s ease 0.4s both;
+  }
+
+  .stat-item:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .stat-item:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  .stat-item:nth-child(4) {
+    animation-delay: 0.7s;
+  }
+
+  .master-photo-container {
+    animation: fadeInUp 0.8s ease 0.3s both;
+  }
+
+  .advantage-card {
+    animation: fadeInUp 0.6s ease both;
+  }
+
+  .advantage-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .advantage-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .advantage-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .advantage-card:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .advantages-title {
+    animation: fadeInUp 0.8s ease;
+  }
+
+  .reviews-carousel {
+    animation: fadeIn 0.8s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .carousel-slide {
+    animation: fadeIn 0.5s ease;
+  }
 }

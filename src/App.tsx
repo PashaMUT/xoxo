@@ -6,10 +6,12 @@ import Footer from "./components/Footer";
 import About from "./sections/About"
 import Advantages from "./sections/Advantages";
 import Reviews from "./sections/Reviews";
+import Intro from "./components/Intro";
 
 const App: React.FC = () => {
     return (
         <div>
+            <Intro/>
             <Header />
             <Hero />
             <About />
