@@ -276,6 +276,7 @@ body {
   height: 500px;
   position: relative;
   overflow: hidden;
+  aspect-ratio:1/1;
 }
 
 .service-video-container video {

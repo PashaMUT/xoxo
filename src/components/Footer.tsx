@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
             <a href="https://vk.com" target="_blank" rel="noopener noreferrer">
                 <FaVk />
             </a>
-            <a href="https://t.me/username" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/xbrows" target="_blank" rel="noopener noreferrer">
                 <FaTelegram />
             </a>
         </footer>
