@@ -3,6 +3,8 @@ import videoG from "../../public/videos/serviceG.mp4";
 import videoB from "../../public/videos/serviceB.mp4";
 import videoL from "../../public/videos/serviceL.mp4";
 import videoT from "../../public/videos/serviceT.mp4";
+import imgM from "../assets/services/serviceM.jpg"
+
 
 const Services: React.FC = () => {
     return (
@@ -77,6 +79,25 @@ const Services: React.FC = () => {
                     </div>
                     <div className="service-video-container">
                         <video src={videoT} autoPlay loop muted playsInline />
+                    </div>
+                </div>
+            </div>
+
+            <div className="service-card">
+                <div className="service-content">
+                    <div className="service-text-block">
+                        <h3 className="service-title">Перманент межреснички + стрелка</h3>
+                        <p className="service-description">
+                            Идеальная подводка, которая не смывается. Техника межресничного пространства
+                            создает эффект густых ресниц, а изящная стрелка придает взгляду выразительность
+                            и лёгкую загадочность. Просыпайтесь с безупречным макияжем каждый день.
+                        </p>
+                        <a href="https://ig.me/m/xoxo___brows" className="booking-button">
+                            Записаться на процедуру
+                        </a>
+                    </div>
+                    <div className="service-video-container">
+                        <img src={imgM}/>
                     </div>
                 </div>
             </div>
