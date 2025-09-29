@@ -15,7 +15,7 @@ const Services: React.FC = () => {
                             Профессиональный перманентный макияж губ с естественным результатом.
                             Долговечность и ухоженный вид каждый день.
                         </p>
-                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                        <a href="https://ig.me/m/xoxo___brows" className="booking-button">
                             Записаться на процедуру
                         </a>
                     </div>
@@ -33,7 +33,7 @@ const Services: React.FC = () => {
                             Идеальная форма бровей на долгое время.
                             Коррекция формы, насыщение цветом, создание естественного контура.
                         </p>
-                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                        <a href="https://ig.me/m/xoxo___brows" className="booking-button">
                             Записаться на процедуру
                         </a>
                     </div>
@@ -52,7 +52,7 @@ const Services: React.FC = () => {
                             идеальный изгиб, придает объем и эффект "открытого взгляда" на 6-8 недель.
                             Ваши ресницы всегда уложены безупречно, даже после умывания.
                         </p>
-                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                        <a href="https://ig.me/m/xoxo___brows" className="booking-button">
                             Записаться на процедуру
                         </a>
                     </div>
@@ -71,7 +71,7 @@ const Services: React.FC = () => {
                             уникальное произведение, отражающее вашу индивидуальность.
                             Вечная эстетика в каждой детали.
                         </p>
-                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                        <a href="https://ig.me/m/xoxo___brows" className="booking-button">
                             Записаться на процедуру
                         </a>
                     </div>
