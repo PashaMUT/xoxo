@@ -2,6 +2,16 @@ import React from 'react';
 import logo from '../assets/logo.png';
 
 const Header: React.FC = () => {
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
     return (
         <header className="header">
             <div className="header-container">
@@ -10,9 +20,51 @@ const Header: React.FC = () => {
 
                 {/* Навигация */}
                 <nav className="header-nav">
-                    <a href="#about">О нас</a>
-                    <a href="#services">Услуги</a>
-                    <a href="#contacts">Контакты</a>
+                    <a
+                        href="#about"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection('about');
+                        }}
+                    >
+                        Обо мне
+                    </a>
+                    <a
+                        href="#services"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection('services');
+                        }}
+                    >
+                        Услуги
+                    </a>
+                    <a
+                        href="#advantages"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection('advantages');
+                        }}
+                    >
+                        Преимущества
+                    </a>
+                    <a
+                        href="#reviews"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection('reviews');
+                        }}
+                    >
+                        Отзывы
+                    </a>
+
+                    {/* Кнопка "Связаться со мной" */}
+                    <a
+                        href="https://instagram.com/xoxo___brows"
+                        className="contact-button"
+                        target="_blank" rel="noopener noreferrer"
+                    >
+                        Связаться со мной
+                    </a>
                 </nav>
             </div>
         </header>

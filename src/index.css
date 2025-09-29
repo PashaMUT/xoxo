@@ -54,7 +54,8 @@ body {
 
 .header-nav {
   display: flex;
-  gap: 40px;
+  align-items: center;
+  gap: 30px;
 }
 
 .header-nav a {
@@ -64,16 +65,17 @@ body {
   font-size: 1rem;
   transition: all 0.3s ease;
   position: relative;
+  padding: 8px 0;
 }
 
-.header-nav a:hover {
+.header-nav a:not(.contact-button):hover {
   color: #f06292;
 }
 
-.header-nav a::after {
+.header-nav a:not(.contact-button)::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
@@ -81,8 +83,36 @@ body {
   transition: width 0.3s ease;
 }
 
-.header-nav a:hover::after {
+.header-nav a:not(.contact-button):hover::after {
   width: 100%;
+}
+
+/* ============ CONTACT BUTTON ============ */
+.contact-button {
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  color: white !important;
+  padding: 12px 25px !important;
+  border-radius: 25px;
+  font-weight: 600 !important;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin-left: 10px;
+  box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240, 98, 146, 0.4);
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+  color: white !important;
+}
+
+.contact-button:active {
+  transform: translateY(0);
+}
+
+.contact-button::after {
+  display: none !important;
 }
 
 /* ============ HERO SECTION ============ */
@@ -91,7 +121,7 @@ body {
   height: 100vh;
   min-height: 600px;
   background-size: cover;
-  background-position: center 20%; /* Опускаем изображение на 30% от верха */
+  background-position: center 20%;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
@@ -113,7 +143,7 @@ body {
   color: white;
   max-width: 800px;
   padding: 0 20px;
-  margin-top: 60px; /* Добавляем отступ сверху для контента */
+  margin-top: 60px;
 }
 
 .hero-content h1 {
@@ -220,6 +250,509 @@ body {
   transform: scale(1.05);
 }
 
+.booking-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============ ABOUT SECTION ============ */
+.about-section {
+  width: 100%;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+  position: relative;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f06292, transparent);
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-text {
+  padding-right: 40px;
+}
+
+.about-text h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.about-text h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #f06292, #e91e63);
+  border-radius: 2px;
+}
+
+.about-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f06292;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.about-features {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.feature-text {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.master-photo-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.master-photo {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.master-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.master-photo:hover img {
+  transform: scale(1.05);
+}
+
+.photo-decoration {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.experience-badge {
+  position: absolute;
+  bottom: 30px;
+  left: -20px;
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  color: white;
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(240, 98, 146, 0.3);
+  text-align: center;
+  z-index: 2;
+}
+
+.experience-years {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.experience-text {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.master-photo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(240, 98, 146, 0.1), rgba(233, 30, 99, 0.1));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============ ADVANTAGES SECTION ============ */
+.advantages-section {
+  width: 100%;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+}
+
+.advantages-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e91e63, transparent);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advantages-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.advantages-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #f06292, #e91e63);
+  border-radius: 2px;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+.advantage-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(240, 98, 146, 0.1);
+}
+
+.advantage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(240, 98, 146, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.advantage-card:hover::before {
+  left: 100%;
+}
+
+.advantage-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(240, 98, 146, 0.15);
+  border-color: rgba(240, 98, 146, 0.3);
+}
+
+.advantage-icon {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.advantage-card:hover .advantage-icon {
+  transform: scale(1.1);
+}
+
+.advantage-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.advantage-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+.advantage-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #f06292, #e91e63);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.advantage-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============ REVIEWS CAROUSEL ============ */
+.reviews-section {
+  width: 100%;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+}
+
+.reviews-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.reviews-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #f06292, #e91e63);
+  border-radius: 2px;
+}
+
+.reviews-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 60px;
+}
+
+.reviews-carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-container {
+  overflow: hidden;
+  border-radius: 15px;
+  background: white;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+.review-image-container {
+  padding: 20px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.review-image {
+  max-width: 100%;
+  max-height: 360px;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #f06292;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: white;
+  color: #e91e63;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-btn.prev {
+  left: 20px;
+}
+
+.carousel-btn.next {
+  right: 20px;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #f06292;
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background: #e91e63;
+}
+
+.carousel-counter {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
 /* ============ FOOTER STYLES ============ */
 .footer {
   width: 100%;
@@ -262,7 +795,12 @@ body {
   }
 
   .header-nav {
-    gap: 30px;
+    gap: 25px;
+  }
+
+  .contact-button {
+    padding: 10px 20px !important;
+    font-size: 0.9rem;
   }
 
   .hero-content h1 {
@@ -280,13 +818,90 @@ body {
   .service-description {
     font-size: 1.1rem;
   }
+
+  .about-content {
+    gap: 40px;
+  }
+
+  .about-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .master-photo {
+    height: 400px;
+  }
+
+  .advantages-section {
+    padding: 80px 20px;
+  }
+
+  .advantages-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+
+  .advantages-grid {
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .advantage-card {
+    padding: 35px 25px;
+  }
+
+  .reviews-section {
+    padding: 80px 20px;
+  }
+
+  .reviews-title {
+    font-size: 2.2rem;
+  }
+
+  .reviews-carousel {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+
+  .review-image-container {
+    min-height: 300px;
+    padding: 15px;
+  }
+
+  .review-image {
+    max-height: 270px;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .carousel-btn.prev {
+    left: 10px;
+  }
+
+  .carousel-btn.next {
+    right: 10px;
+  }
+
+  .footer {
+    height: 150px;
+    gap: 30px;
+  }
+
+  .footer a {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+  }
 }
 
 /* Small Tablets (768px and below) */
 @media (max-width: 768px) {
   .header-container {
     padding: 0 20px;
-    height: 60px;
+    height: 70px;
   }
 
   .header-logo {
@@ -300,6 +915,12 @@ body {
 
   .header-nav a {
     font-size: 0.9rem;
+  }
+
+  .contact-button {
+    padding: 8px 16px !important;
+    font-size: 0.85rem;
+    margin-left: 5px;
   }
 
   .hero {
@@ -343,6 +964,91 @@ body {
     font-size: 2.2rem;
   }
 
+  .about-section {
+    padding: 80px 20px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+  }
+
+  .about-text {
+    padding-right: 0;
+  }
+
+  .about-text h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .stat-item {
+    padding: 15px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .master-photo {
+    height: 350px;
+  }
+
+  .experience-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    padding: 15px 20px;
+  }
+
+  .photo-decoration {
+    top: -15px;
+    right: -15px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .advantages-section {
+    padding: 60px 20px;
+  }
+
+  .advantages-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  .advantages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+
+  .advantage-card {
+    padding: 30px 20px;
+  }
+
+  .advantage-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .advantage-title {
+    font-size: 1.3rem;
+  }
+
+  .advantage-text {
+    font-size: 1rem;
+  }
+
+  .carousel-indicators {
+    margin-top: 20px;
+  }
+
   .footer {
     height: 150px;
     gap: 30px;
@@ -359,7 +1065,7 @@ body {
 @media (max-width: 480px) {
   .header-container {
     padding: 0 15px;
-    height: 55px;
+    height: 60px;
   }
 
   .header-logo {
@@ -372,7 +1078,13 @@ body {
   }
 
   .header-nav a {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .contact-button {
+    padding: 6px 12px !important;
+    font-size: 0.75rem;
+    margin-left: 5px;
   }
 
   .hero {
@@ -414,6 +1126,119 @@ body {
     font-size: 1rem;
   }
 
+  .about-section {
+    padding: 60px 15px;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .about-description {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .stat-item {
+    padding: 20px;
+  }
+
+  .feature-item {
+    padding: 12px 0;
+  }
+
+  .feature-text {
+    font-size: 1rem;
+  }
+
+  .master-photo {
+    height: 300px;
+  }
+
+  .experience-badge {
+    padding: 12px 18px;
+    bottom: -15px;
+  }
+
+  .experience-years {
+    font-size: 1.5rem;
+  }
+
+  .photo-decoration {
+    width: 60px;
+    height: 60px;
+    top: -10px;
+    right: -10px;
+  }
+
+  .advantages-section {
+    padding: 50px 15px;
+  }
+
+  .advantages-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .advantages-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .advantage-card {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+
+  .advantage-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+
+  .advantage-title {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .advantage-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .reviews-section {
+    padding: 60px 15px;
+  }
+
+  .reviews-title {
+    font-size: 1.8rem;
+  }
+
+  .reviews-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .review-image-container {
+    min-height: 250px;
+    padding: 10px;
+  }
+
+  .review-image {
+    max-height: 230px;
+  }
+
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
   .footer {
     height: 120px;
     gap: 20px;
@@ -434,7 +1259,12 @@ body {
   }
 
   .header-nav a {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .contact-button {
+    padding: 5px 10px !important;
+    font-size: 0.7rem;
   }
 
   .hero-content h1 {
@@ -465,12 +1295,6 @@ body {
 }
 
 /* ============ UTILITY CLASSES ============ */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .text-center {
   text-align: center;
 }
@@ -508,4 +1332,84 @@ body {
 
 .text-white {
   color: white;
+}
+
+/* Дополнительные эффекты для кнопки */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(240, 98, 146, 0.6);
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+  }
+}
+
+.contact-button {
+  animation: pulse 2s infinite;
+}
+
+.contact-button:hover {
+  animation: none;
+}
+
+/* Анимации для секций */
+.about-text h2 {
+  animation: fadeInUp 0.8s ease;
+}
+
+.about-description {
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.stat-item {
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.stat-item:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.stat-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.stat-item:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+.master-photo-container {
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.advantage-card {
+  animation: fadeInUp 0.6s ease both;
+}
+
+.advantage-card:nth-child(1) { animation-delay: 0.1s; }
+.advantage-card:nth-child(2) { animation-delay: 0.2s; }
+.advantage-card:nth-child(3) { animation-delay: 0.3s; }
+.advantage-card:nth-child(4) { animation-delay: 0.4s; }
+
+.advantages-title {
+  animation: fadeInUp 0.8s ease;
+}
+
+.reviews-carousel {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-slide {
+  animation: fadeIn 0.5s ease;
 }

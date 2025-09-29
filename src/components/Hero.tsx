@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
             <div className="hero-content">
                 <h1>Красота начинается здесь</h1>
                 <p className="text-xl mt-4 font-medium">
-                    Перманентный макияж, брови, губы и татуировки
+                    Перманентный макияж всех зон и татуировки
                 </p>
             </div>
         </section>

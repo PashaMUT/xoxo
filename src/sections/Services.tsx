@@ -1,7 +1,8 @@
 import React from "react";
-import video1 from "../../public/videos/service1.mp4";
-import video2 from "../../public/videos/service.mp4";
-import video3 from "../../public/videos/service3.mp4";
+import videoG from "../../public/videos/serviceG.mp4";
+import videoB from "../../public/videos/serviceB.mp4";
+import videoL from "../../public/videos/serviceL.mp4";
+import videoT from "../../public/videos/serviceT.mp4";
 
 const Services: React.FC = () => {
     return (
@@ -14,9 +15,12 @@ const Services: React.FC = () => {
                             Профессиональный перманентный макияж губ с естественным результатом.
                             Долговечность и ухоженный вид каждый день.
                         </p>
+                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                            Записаться на процедуру
+                        </a>
                     </div>
                     <div className="service-video-container">
-                        <video src={video2} autoPlay loop muted playsInline />
+                        <video src={videoG} autoPlay loop muted playsInline/>
                     </div>
                 </div>
             </div>
@@ -29,9 +33,12 @@ const Services: React.FC = () => {
                             Идеальная форма бровей на долгое время.
                             Коррекция формы, насыщение цветом, создание естественного контура.
                         </p>
+                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                            Записаться на процедуру
+                        </a>
                     </div>
                     <div className="service-video-container">
-                        <video src={video3} autoPlay loop muted playsInline />
+                        <video src={videoB} autoPlay loop muted playsInline />
                     </div>
                 </div>
             </div>
@@ -45,9 +52,31 @@ const Services: React.FC = () => {
                             идеальный изгиб, придает объем и эффект "открытого взгляда" на 6-8 недель.
                             Ваши ресницы всегда уложены безупречно, даже после умывания.
                         </p>
+                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                            Записаться на процедуру
+                        </a>
                     </div>
                     <div className="service-video-container">
-                        <video src={video1} autoPlay loop muted playsInline />
+                        <video  src={videoL} autoPlay loop muted playsInline/>
+                    </div>
+                </div>
+            </div>
+
+            <div className="service-card">
+                <div className="service-content reverse">
+                    <div className="service-text-block">
+                        <h3 className="service-title">Профессиональная татуировка</h3>
+                        <p className="service-description">
+                            От тонких минималистичных линий до сложных композиций. Каждая работа —
+                            уникальное произведение, отражающее вашу индивидуальность.
+                            Вечная эстетика в каждой детали.
+                        </p>
+                        <a href="https://www.instagram.com/direct/t/xoxo___brows/" className="booking-button">
+                            Записаться на процедуру
+                        </a>
+                    </div>
+                    <div className="service-video-container">
+                        <video src={videoT} autoPlay loop muted playsInline />
                     </div>
                 </div>
             </div>
