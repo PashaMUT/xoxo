@@ -2,17 +2,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
 type IntroProps = {
-    onFinish?: () => void; // делаем необязательным
+    onFinish?: () => void;
 };
 
 export default function Intro({ onFinish }: IntroProps) {
     const [showIntro, setShowIntro] = useState(true);
-    const finishTimer = useRef<NodeJS.Timeout | null>(null); // сохраняем таймер в ref
-    const hideTimer = useRef<NodeJS.Timeout | null>(null);
+
+    const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const finishTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
-        hideTimer.current = setTimeout(() => setShowIntro(false), 2000); // показываем интро 2с
-        finishTimer.current = setTimeout(() => onFinish?.(), 4000); // после 4с вызываем onFinish
+        hideTimer.current = setTimeout(() => setShowIntro(false), 2000);
+        finishTimer.current = setTimeout(() => onFinish?.(), 4000);
 
         return () => {
             if (hideTimer.current) clearTimeout(hideTimer.current);
@@ -42,7 +43,6 @@ export default function Intro({ onFinish }: IntroProps) {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    {/* X */}
                     <motion.div
                         style={{
                             fontSize: "2rem",
@@ -57,7 +57,6 @@ export default function Intro({ onFinish }: IntroProps) {
                         X
                     </motion.div>
 
-                    {/* O */}
                     <motion.div
                         style={{
                             fontSize: "2rem",
