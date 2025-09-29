@@ -1,4 +1,4 @@
-import About from "./About";
+import React from 'react';
 
 const Advantages: React.FC = () => {
     const advantages = [
