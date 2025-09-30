@@ -3,7 +3,7 @@ import heroBg from '../assets/hero.jpg';
 
 const Hero: React.FC = () => {
     return (
-        <section
+        <section id="hero"
             className="hero text-white relative"
             style={{ backgroundImage: `url(${heroBg})` }}
         >
