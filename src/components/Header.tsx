@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         <>
             <header className="header">
                 <div className="header-container">
-                    <img  href="#hero" src={logo} alt="Логотип" className="header-logo" onClick={(e) => { e.preventDefault(); scrollToSection('hero');}} />
+                    <img src={logo} alt="Логотип" className="header-logo" onClick={(e) => { e.preventDefault(); scrollToSection('hero');}} />
 
                     <nav className="header-nav">
                         <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>
