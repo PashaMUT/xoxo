@@ -948,6 +948,7 @@ body {
 
   .review-image {
     max-height: 550px;
+    max-width: 350px;
   }
 
   .carousel-btn {
