@@ -710,6 +710,7 @@ body {
   overflow: hidden;
   border-radius: 15px;
   background: white;
+  height: 620px;
 
 }
 
@@ -1162,7 +1163,7 @@ body {
   }
 
   .carousel-indicators {
-    margin-top: 20px;
+    margin-top: 30px;
   }
 
   .footer {
@@ -1406,6 +1407,7 @@ body {
 
   .review-image {
     max-height: 550px;
+    max-width: 300px;
   }
 
   .carousel-btn {
