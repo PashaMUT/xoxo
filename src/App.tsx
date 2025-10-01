@@ -23,4 +23,21 @@ const App: React.FC = () => {
     );
 };
 
+<script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "XOXO.BY",
+            "url": "https://xoxo.by/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://xoxo.by/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        })
+    }}
+/>
+
 export default App;

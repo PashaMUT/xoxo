@@ -1,13 +1,46 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/assets/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Перманентный мастер</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="ru"> <!-- ✅ Измените на русский -->
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="src/assets/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Основные мета-теги -->
+  <title>XOXO Brows - Перманентный макияж в Светлогорске | Татуаж бровей, губ, стрелок</title>
+  <meta name="description" content="💄 Профессиональный перманентный макияж в Светлогорске. Татуаж бровей, губ, стрелок. Ламинирование ресниц. Опытный мастер. Запись онлайн. Гарантия качества. Доступные цены.">
+  <meta name="keywords" content="перманентный макияж Светлогорск, татуаж бровей, ламинирование ресниц, перманент губ, татуаж стрелок">
+
+  <!-- Open Graph для соцсетей -->
+  <meta property="og:title" content="XOXO Brows - Перманентный макияж в Светлогорске">
+  <meta property="og:description" content="Профессиональный перманентный макияж бровей, губ, стрелок. Ламинирование ресниц. Опытный мастер с портфолио работ.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xoxo.by/">
+  <meta property="og:image" content="https://xoxo.by/src/assets/logo.png">
+
+  <!-- Каноническая ссылка -->
+  <link rel="canonical" href="https://xoxo.by/">
+
+  <!-- Структурированные данные (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "XOXO Brows",
+      "description": "Студия перманентного макияжа в Светлогорске",
+      "url": "https://xoxo.by/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Светлогорск",
+        "addressCountry": "BY"
+      },
+      "openingHours": "Mo-Fr 12:00-22:00, Sa 10:00-22:00",
+      "priceRange": "$$",
+      "serviceType": "Перманентный макияж, Ламинирование ресниц"
+    }
+  </script>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
 </html>
