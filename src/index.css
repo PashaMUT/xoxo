@@ -14,16 +14,44 @@ html {
 }
 
 body {
+  background: #eeeeee;
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-/* Дополнительные стили для плавающей кнопки */
-.floating-contact-button {
-  /* Добавляем микро-анимацию */
-  animation: float 3s ease-in-out infinite;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes float {
@@ -35,12 +63,150 @@ body {
   }
 }
 
-/* Эффект при скролле */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: rotate(45deg) translate(0, 0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotate(45deg) translate(-10px, -10px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Классы анимаций */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out both;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out both;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.rotate-animation {
+  animation: rotate 20s linear infinite;
+}
+
+.count-up {
+  animation: countUp 0.5s ease-out both;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+/* ============ UTILITY CLASSES ============ */
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-white {
+  color: white;
+}
+
+.desktop-only {
+  display: block;
+}
+
+/* ============ FLOATING BUTTON ============ */
+.floating-contact-button {
+  animation: float 3s ease-in-out infinite;
+  display: none !important;
+}
+
 .floating-contact-button.scrolled {
   background: linear-gradient(135deg, #e91e63, #c2185b);
 }
 
-/* Затемнение фона при наведении */
 .floating-contact-button::after {
   content: '';
   position: absolute;
@@ -85,6 +251,13 @@ body {
   height: 60px;
   object-fit: contain;
   transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .header-logo:hover {
@@ -94,10 +267,30 @@ body {
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 0;
 }
 
-.header-nav a {
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.main-nav {
+  padding-right: 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.anchor-nav {
+  padding: 0 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-nav {
+  padding-left: 30px;
+}
+
+.nav-link {
   color: white;
   text-decoration: none;
   font-weight: 500;
@@ -105,13 +298,19 @@ body {
   transition: all 0.3s ease;
   position: relative;
   padding: 8px 0;
+  white-space: nowrap;
 }
 
-.header-nav a:not(.contact-button):hover {
+.nav-link:hover {
   color: #f06292;
 }
 
-.header-nav a:not(.contact-button)::after {
+.nav-link.active {
+  color: #f06292;
+  font-weight: 600;
+}
+
+.nav-link::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -122,7 +321,8 @@ body {
   transition: width 0.3s ease;
 }
 
-.header-nav a:not(.contact-button):hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
@@ -135,15 +335,17 @@ body {
   font-weight: 600 !important;
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  margin-left: 10px;
   box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+  animation: pulse 2s infinite;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .contact-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(240, 98, 146, 0.4);
   background: linear-gradient(135deg, #e91e63, #c2185b);
-  color: white !important;
+  animation: none;
 }
 
 .contact-button:active {
@@ -200,19 +402,9 @@ body {
   animation: fadeInUp 1s ease-out 0.3s both;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ============ SERVICES SECTION ============ */
 .services-section {
+  background: #eeeeee;
   width: 100%;
   padding: 100px 20px;
   display: grid;
@@ -230,7 +422,7 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   align-items: stretch;
-  height: 700px; /* Базовая высота */
+  height: 700px;
 }
 
 .service-card:hover {
@@ -273,7 +465,7 @@ body {
   color: #666;
   margin-bottom: 20px;
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* Максимум 5 строк текста */
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -286,7 +478,6 @@ body {
 }
 
 .service-video-container img {
-
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -294,13 +485,13 @@ body {
   border-radius: 10px;
 }
 
-
 .service-video-container video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Показываем всё видео без обрезаний */
+  object-fit: cover;
   object-position: center;
   border-radius: 10px;
+  transition: transform 0.3s ease;
 }
 
 .service-video-container:hover video {
@@ -332,7 +523,7 @@ body {
 .about-section {
   width: 100%;
   padding: 100px 20px;
-  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #eeeeee 0%, #ffffff 100%);
   position: relative;
 }
 
@@ -366,6 +557,7 @@ body {
   color: #333;
   margin-bottom: 30px;
   position: relative;
+  animation: fadeInUp 0.8s ease;
 }
 
 .about-text h2::after {
@@ -384,6 +576,7 @@ body {
   line-height: 1.8;
   color: #666;
   margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease 0.2s both;
 }
 
 .about-stats {
@@ -400,11 +593,17 @@ body {
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
+  animation: fadeInUp 0.8s ease both;
 }
 
 .stat-item:hover {
   transform: translateY(-5px);
 }
+
+.stat-item:nth-child(1) { animation-delay: 0.4s; }
+.stat-item:nth-child(2) { animation-delay: 0.5s; }
+.stat-item:nth-child(3) { animation-delay: 0.6s; }
+.stat-item:nth-child(4) { animation-delay: 0.7s; }
 
 .stat-number {
   font-size: 2.5rem;
@@ -460,6 +659,7 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease 0.3s both;
 }
 
 .master-photo {
@@ -535,7 +735,7 @@ body {
 .advantages-section {
   width: 100%;
   padding: 100px 20px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: #eeeeee;
   position: relative;
 }
 
@@ -562,6 +762,7 @@ body {
   text-align: center;
   margin-bottom: 60px;
   position: relative;
+  animation: fadeInUp 0.8s ease;
 }
 
 .advantages-title::after {
@@ -570,7 +771,7 @@ body {
   bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 80px;
   height: 3px;
   background: linear-gradient(90deg, #f06292, #e91e63);
   border-radius: 2px;
@@ -593,7 +794,13 @@ body {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(240, 98, 146, 0.1);
+  animation: fadeInUp 0.6s ease both;
 }
+
+.advantage-card:nth-child(1) { animation-delay: 0.1s; }
+.advantage-card:nth-child(2) { animation-delay: 0.2s; }
+.advantage-card:nth-child(3) { animation-delay: 0.3s; }
+.advantage-card:nth-child(4) { animation-delay: 0.4s; }
 
 .advantage-card::before {
   content: '';
@@ -658,13 +865,1181 @@ body {
 .advantage-card:hover::after {
   transform: scaleX(1);
 }
+/*=====================!* Services Page Styles *!=====================*/
+
+/* Стили для страницы услуг */
+.procedures-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.procedures-hero-section {
+  background: linear-gradient(135deg, #f07f8a 0%, #e91e63 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.procedures-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.procedures-hero-content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Фильтр категорий */
+.procedures-filter-section {
+  padding: 40px 20px;
+  background: #eeeeee;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.categories-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.category-btn {
+  padding: 12px 24px;
+  border: 2px solid #f07f8a;
+  background: white;
+  color: #f07f8a;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.category-btn:hover {
+  background: #f07f8a;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.category-btn.active {
+  background: #f07f8a;
+  color: white;
+}
+
+/* Сетка услуг */
+.procedures-grid-section {
+  padding: 60px 20px;
+  background: #eeeeee;
+}
+
+.procedures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.procedure-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.procedure-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.procedure-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eeeeee;
+  padding-bottom: 15px;
+}
+
+.procedure-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+.procedure-category {
+  background: linear-gradient(135deg, #f07f8a, #e91e63);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.procedure-content {
+  flex: 1;
+  margin-bottom: 25px;
+}
+
+.procedure-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.procedure-details h4 {
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.procedure-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.procedure-details li {
+  padding: 8px 0;
+  color: #555;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+}
+
+.procedure-details li:before {
+  content: "✓";
+  color: #eeeeee;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.procedure-meta {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.meta-label {
+  font-weight: 600;
+}
+
+.procedure-footer {
+  margin-top: auto;
+}
+
+.booking-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #f07f8a, #e91e63);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.booking-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Стили для страницы портфолио */
+.portfolio-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-hero-section {
+  background: linear-gradient(135deg,  #f06292 0%, #e91e63 100%);
+  color: white;
+  padding: 100px 20px 80px;
+  text-align: center;
+}
+
+.portfolio-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.portfolio-hero-content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Фильтр категорий */
+.portfolio-filter-section {
+  padding: 40px 20px;
+  background: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.portfolio-category-btn {
+  padding: 12px 24px;
+  border: 2px solid  #f06292;
+  background: white;
+  color:  #f06292;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.portfolio-category-btn:hover {
+  background:  #f06292;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.portfolio-category-btn.active {
+  background:  #f06292;
+  color: white;
+}
+
+/* Сетка работ */
+.portfolio-grid-section {
+  padding: 60px 20px;
+  background: white;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.portfolio-item {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.portfolio-image-container {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.05);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-category-tag {
+  background:  #f06292;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+.portfolio-info h3 {
+  color: white;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.portfolio-info p {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Instagram CTA */
+.portfolio-instagram-cta {
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.instagram-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.instagram-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.instagram-text {
+  flex: 1;
+  text-align: left;
+}
+
+.instagram-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.instagram-text p {
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.instagram-button {
+  background: white;
+  color: #E1306C;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.instagram-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+}
+
+/* Попап просмотра фото */
+.portfolio-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.portfolio-popup {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.popup-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.popup-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* CTA секция */
+.portfolio-cta-section {
+  background: linear-gradient(135deg,  #f06292 0%, #f5576c 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.portfolio-cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.portfolio-cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolio-cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 18px 35px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #f5576c;
+}
+
+.cta-button.primary:hover {
+  background: transparent;
+  color: white;
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border-color: white;
+}
+
+.cta-button.secondary:hover {
+  background: white;
+  color: #f5576c;
+  transform: translateY(-2px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .portfolio-hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .instagram-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .instagram-text {
+    text-align: center;
+  }
+
+  .portfolio-cta-content h2 {
+    font-size: 2rem;
+  }
+
+  .portfolio-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-hero-section {
+    padding: 80px 15px 60px;
+  }
+
+  .portfolio-filter-section {
+    padding: 30px 15px;
+  }
+
+  .portfolio-grid-section {
+    padding: 40px 15px;
+  }
+
+  .portfolio-categories {
+    gap: 10px;
+  }
+
+  .portfolio-category-btn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+
+  .portfolio-instagram-cta {
+    padding: 30px 20px;
+  }
+
+  .portfolio-cta-section {
+    padding: 60px 15px;
+  }
+}
+
+/*====================== CTA секция======================= */
+.procedures-cta-section {
+  background: linear-gradient(135deg,  #f06292 0%, #f5576c 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 18px 35px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #f5576c;
+  border: 2px solid white;
+}
+
+.cta-button.primary:hover {
+  background: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-button.secondary:hover {
+  background: white;
+  color: #f06292;
+  transform: translateY(-2px);
+}
+
+.cta-button.tertiary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.cta-button.tertiary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .procedures-hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .procedures-cta-section {
+    padding: 60px 20px;
+  }
+
+  .procedures-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .procedure-card {
+    padding: 20px;
+  }
+
+  .categories-filter {
+    gap: 10px;
+  }
+
+  .category-btn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 16px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .procedures-cta-section {
+    padding: 50px 15px;
+  }
+
+  .cta-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+  }
+
+  .procedures-hero-section {
+    padding: 60px 15px;
+  }
+
+  .procedures-filter-section {
+    padding: 30px 15px;
+  }
+
+  .procedures-grid-section {
+    padding: 40px 15px;
+  }
+
+  .procedures-cta-section {
+    padding: 60px 15px;
+  }
+}
+
+.procedures-grid {
+  align-items: start;
+}
+
+.procedure-card {
+  height: auto;
+  min-height: 450px;
+}
+
+.procedure-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.procedure-details {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+
+
+/*=====================!* Contacts Page Styles *!=====================*/
+/* Contacts Page - в стиле сайта */
+/* Стили для страницы локации */
+.contacts-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts-hero-section {
+  background: linear-gradient(90deg, #f06292, #e91e63);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contacts-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.contacts-hero-content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.contacts-content-section {
+  flex: 1;
+  padding: 60px 20px;
+  background: #eeeeee;
+}
+
+.contacts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Левая колонка - карта */
+.contacts-map-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 600;
+}
+
+.address-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.address-icon {
+  font-size: 2rem;
+  min-width: 50px;
+}
+
+.address-details h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.address-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.map-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.map-iframe {
+  border: none;
+  display: block;
+}
+
+.map-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  pointer-events: none;
+}
+
+.map-marker {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.marker-pulse {
+  width: 12px;
+  height: 12px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.transport-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.transport-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.transport-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.transport-icon {
+  font-size: 1.5rem;
+  min-width: 40px;
+}
+
+/* Правая колонка - информация */
+.info-block {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.info-block h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.info-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  min-width: 40px;
+  margin-top: 5px;
+}
+
+.feature-text strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.feature-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+}
+
+.additional-details {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.detail-category h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.detail-category p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+.contacts-booking {
+  background: linear-gradient(90deg, #f06292, #e91e63);
+  color: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contacts-booking h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.contacts-booking p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.booking-button.large {
+  display: inline-block;
+  padding: 18px 35px;
+  background: white;
+  color: #f07f8a;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.booking-button.large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+}
+
+.booking-button.large.primary {
+  background: white;
+  color: #f06292;
+  border: 2px solid white;
+}
+
+.booking-button.large.primary:hover {
+  background: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.booking-button.large.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.booking-button.large.secondary:hover {
+  background: white;
+  color: #f06292;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .contacts-booking {
+    padding: 30px 20px;
+    margin-top: 30px;
+  }
+
+  .contacts-booking h3 {
+    font-size: 1.5rem;
+  }
+
+  .contacts-booking p {
+    font-size: 1rem;
+  }
+
+  .contacts-booking-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .booking-button.large {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-booking {
+    padding: 25px 15px;
+    margin-top: 25px;
+  }
+
+  .contacts-booking h3 {
+    font-size: 1.3rem;
+  }
+
+  .booking-button.large {
+    font-size: 1rem;
+    padding: 14px 20px;
+  }
+}
+
+/* Анимации */
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+  }
+  100% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+  .contacts-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contacts-hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .address-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .transport-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-hero-section {
+    padding: 60px 15px;
+  }
+
+  .contacts-content-section {
+    padding: 40px 15px;
+  }
+
+  .info-block {
+    padding: 20px;
+  }
+
+  .contacts-booking {
+    padding: 30px 20px;
+  }
+
+  .booking-button.large {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+  }
+}
 
 /* ============ REVIEWS CAROUSEL ============ */
 .reviews-section {
   width: 100%;
   padding: 100px 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background: #eeeeee;
   position: relative;
+}
+
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e91e63, transparent);
 }
 
 .reviews-title {
@@ -680,7 +2055,7 @@ body {
 .reviews-title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
@@ -704,6 +2079,7 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease;
 }
 
 .carousel-container {
@@ -711,7 +2087,6 @@ body {
   border-radius: 15px;
   background: white;
   height: 620px;
-
 }
 
 .carousel-track {
@@ -724,6 +2099,7 @@ body {
   min-width: 100%;
   flex-shrink: 0;
   height: 550px;
+  animation: fadeIn 0.5s ease;
 }
 
 .review-image-container {
@@ -848,25 +2224,780 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* ============ ABOUT PAGE STYLES ============ */
 
-.intro-overlay {
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateZ(0);
+/* Добавляем в CSS для About Page */
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.x-letter, .o-letter {
-  will-change: transform, opacity;
-  text-rendering: optimizeSpeed;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: rotate(45deg) translate(0, 0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotate(45deg) translate(-10px, -10px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* НОВЫЕ АНИМАЦИИ ДЛЯ ФОТО */
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(240, 98, 146, 0.3);
+  }
+  50% {
+    box-shadow: 0 10px 40px rgba(240, 98, 146, 0.6);
+  }
+}
+
+@keyframes photo-glow {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Классы анимаций */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out both;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out both;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.rotate-animation {
+  animation: rotate 20s linear infinite;
+}
+
+.count-up {
+  animation: countUp 0.5s ease-out both;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+/* ============ ABOUT PAGE PHOTO ANIMATIONS ============ */
+
+/* Анимация подсветки фото */
+.master-photo-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.master-main-photo {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Скользящая подсветка */
+.master-main-photo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+  );
+  transition: left 0.7s ease;
+  z-index: 2;
+}
+
+.master-main-photo:hover::before {
+  left: 100%;
+}
+
+.master-main-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.master-main-photo:hover img {
+  transform: scale(1.05);
+}
+
+/* Свечение рамки при наведении */
+.master-photo-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #f06292, #e91e63, #f06292);
+  border-radius: 22px;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.master-photo-wrapper:hover::before {
+  opacity: 1;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Бейдж с опытом */
+.experience-badge-large {
+  position: absolute;
+  bottom: 30px;
+  left: -20px;
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  color: white;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(240, 98, 146, 0.3);
+  text-align: center;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.experience-badge-large:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 15px 40px rgba(240, 98, 146, 0.5);
+}
+
+/* Вращающийся декор */
+.photo-frame {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.8;
+  animation: rotate 20s linear infinite;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+
+  .mobile-only {
+    display: flex !important;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f06292, #e91e63);
+    color: white !important;
+    padding: 15px 20px !important;
+    border-radius: 25px;
+    font-weight: 600 !important;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(240, 98, 146, 0.4);
+    z-index: 9999; /* ВЫШЕ хедера */
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .floating-contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(240, 98, 146, 0.6);
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    animation: none;
+  }
+
+  .floating-contact-button:active {
+    transform: translateY(0);
+  }
+
+  /* Убедимся, что хедер имеет меньший z-index */
+  .header {
+    z-index: 1000;
+  }
+
+  .master-main-photo {
+    height: 400px;
+  }
+
+  .master-main-photo::before {
+    display: none;
+  }
+
+  .master-photo-wrapper::before {
+    display: none;
+  }
+
+  .experience-badge-large {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+  }
+
+  .experience-badge-large:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+
+  .photo-frame {
+    display: none;
+  }
+}
+
+/* УБИРАЕМ ДУБЛИРУЮЩИЕСЯ СТИЛИ - оставляем только эти */
+
+/* Удаляем дубликаты из About Page Styles */
+.about-page {
+  min-height: 100vh;
+}
+
+.about-hero-section {
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  color: white;
+  padding: 140px 20px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><path d="M500 50L550 0L600 50L650 0L700 50L750 0L800 50L850 0L900 50L950 0L1000 50L1000 100L0 100L0 50Z"/></svg>');
+  background-size: cover;
+  background-position: bottom;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.about-hero-content p {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+.about-page-content {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #eeeeee 0%, #ffffff 100%);
+}
+
+.about-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-text-content h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.about-text-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #f06292, #e91e63);
+  border-radius: 2px;
+}
+
+.about-intro {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.about-achievements {
+  margin-bottom: 50px;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateY(-5px);
+}
+
+.achievement-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.achievement-text h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.achievement-text p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: #f06292;
+  box-shadow: 0 10px 30px rgba(240, 98, 146, 0.15);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f06292;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.about-principles h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.principles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.principle-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.principle-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #f06292, #e91e63);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.principle-text {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.experience-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.experience-description {
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
 /* ============ RESPONSIVE DESIGN ============ */
+
+/*===================== POP UP ==================*/
+
+/* Стили для попапа связи */
+.contact-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.contact-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: popupAppear 0.3s ease-out;
+}
+
+@keyframes popupAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-close:hover {
+  color: #333;
+}
+
+.contact-popup h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.contact-card {
+  background: #eeeeee;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  border-color: #f06292;
+  transform: translateY(-2px);
+}
+
+.contact-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.contact-card-content h4 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.contact-card-content p {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.contact-card-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+
+.contact-card-button.instagram {
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  color: white;
+}
+
+.contact-card-button.telegram {
+  background: #0088cc;
+  color: white;
+}
+
+.contact-card-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.telegram-form {
+  margin-top: 15px;
+}
+
+.telegram-form .form-group {
+  margin-bottom: 15px;
+}
+
+.telegram-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e8ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.telegram-form input:focus {
+  outline: none;
+  border-color: #f06292;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.telegram-form input::placeholder {
+  color: #999;
+}
+
+/* Адаптивность для попапа */
+@media (max-width: 768px) {
+  .contact-popup {
+    padding: 20px 15px;
+    margin: 10px;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+
+  .contact-popup h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact-card-content h4 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Обновляем стили кнопки в хедере */
+.contact-button {
+  background: linear-gradient(135deg, #f06292 0%, #e91e63 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.contact-card-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.telegram-form input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 /* Tablets (768px - 1024px) */
 @media (max-width: 1024px) {
-
   .service-card {
-    height: 600px; /* Чуть меньше на планшетах */
+    height: 600px;
   }
 
   .header-container {
@@ -875,7 +3006,22 @@ body {
   }
 
   .header-nav {
-    gap: 25px;
+    gap: 15px;
+  }
+
+  .nav-group {
+    gap: 15px;
+  }
+
+  .main-nav,
+  .anchor-nav {
+    padding-right: 20px;
+    padding-left: 0;
+  }
+
+  .contact-nav {
+    padding-left: 20px;
+    display: none;
   }
 
   .contact-button {
@@ -976,13 +3122,24 @@ body {
     width: 50px;
     height: 50px;
   }
+
+  .about-hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .about-text-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .master-main-photo {
+    height: 500px;
+  }
 }
 
 /* Small Tablets (768px and below) */
 @media (max-width: 768px) {
-
   .service-card {
-    height: auto; /* Или фиксированная высота, например 500px */
+    height: auto;
     min-height: 500px;
   }
 
@@ -991,48 +3148,49 @@ body {
     min-height: auto;
   }
 
-  @media (max-width: 768px) {
-    .header-container {
-      padding: 0 10px;
-      gap: 15px;
-    }
+  .header-container {
+    padding: 0 10px;
+    gap: 15px;
+  }
 
-    .header-logo {
-      width: 45px;
-      height: 45px;
-      flex-shrink: 0;
-    }
+  .header-logo {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+  }
 
-    .header-nav {
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .header-nav {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    .nav-link {
-      font-size: 0.75rem;
-      padding: 6px 10px;
-      white-space: nowrap;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
-    }
+  .anchor-nav {
+    display: none !important;
+  }
 
-    .nav-link:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-1px);
-    }
+  .main-nav {
+    border-right: none;
+    padding-right: 15px;
+  }
 
-    .nav-link::after {
-      display: none;
-    }
+  .contact-nav {
+    padding-left: 15px;
+  }
 
-    .contact-button {
-      font-size: 0.75rem;
-      padding: 6px 12px !important;
-      margin-left: 0;
-      white-space: nowrap;
-    }
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .header-nav .contact-button {
+    display: none;
+  }
+
+  .contact-button {
+    font-size: 0.75rem;
+    padding: 6px 12px !important;
+    margin-left: 0;
+    white-space: nowrap;
   }
 
   .hero {
@@ -1177,14 +3335,10 @@ body {
     height: 50px;
   }
 
-  .header-nav .contact-button {
-    display: none;
-  }
   .desktop-only {
     display: none !important;
   }
 
-  /* Показываем плавающую кнопку */
   .floating-contact-button {
     display: flex !important;
     position: fixed;
@@ -1218,12 +3372,49 @@ body {
   .floating-contact-button:active {
     transform: translateY(0);
   }
-}
 
+  /* About Page Mobile */
+  .about-page-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-text-content h2 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .about-text-content h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .master-main-photo {
+    height: 400px;
+  }
+
+  .experience-badge-large {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+  }
+
+  .slide-in-left,
+  .slide-in-right {
+    animation: fadeInUp 0.8s ease-out both;
+  }
+}
 
 /* Mobile (480px and below) */
 @media (max-width: 480px) {
-
   .floating-contact-button {
     bottom: 15px;
     right: 15px;
@@ -1427,11 +3618,26 @@ body {
     width: 45px;
     height: 45px;
   }
+
+  .about-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .about-hero-content p {
+    font-size: 1rem;
+  }
+
+  .about-text-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .master-main-photo {
+    height: 300px;
+  }
 }
 
 /* Small Mobile (360px and below) */
 @media (max-width: 360px) {
-
   .floating-contact-button {
     bottom: 10px;
     right: 10px;
@@ -1476,137 +3682,5 @@ body {
     font-size: 1.6rem;
     width: 40px;
     height: 40px;
-  }
-
-
-  /* ============ UTILITY CLASSES ============ */
-  .text-center {
-    text-align: center;
-  }
-
-  .mt-4 {
-    margin-top: 1rem;
-  }
-
-  .text-xl {
-    font-size: 1.25rem;
-  }
-
-  .font-medium {
-    font-weight: 500;
-  }
-
-  .relative {
-    position: relative;
-  }
-
-  .absolute {
-    position: absolute;
-  }
-
-  .inset-0 {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .bg-black\/50 {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .text-white {
-    color: white;
-  }
-
-  /* Дополнительные эффекты для кнопки */
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
-    }
-    50% {
-      box-shadow: 0 4px 20px rgba(240, 98, 146, 0.6);
-    }
-    100% {
-      box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
-    }
-  }
-
-  .contact-button {
-    animation: pulse 2s infinite;
-  }
-
-  .contact-button:hover {
-    animation: none;
-  }
-
-  /* Анимации для секций */
-  .about-text h2 {
-    animation: fadeInUp 0.8s ease;
-  }
-
-  .about-description {
-    animation: fadeInUp 0.8s ease 0.2s both;
-  }
-
-  .stat-item {
-    animation: fadeInUp 0.8s ease 0.4s both;
-  }
-
-  .stat-item:nth-child(2) {
-    animation-delay: 0.5s;
-  }
-
-  .stat-item:nth-child(3) {
-    animation-delay: 0.6s;
-  }
-
-  .stat-item:nth-child(4) {
-    animation-delay: 0.7s;
-  }
-
-  .master-photo-container {
-    animation: fadeInUp 0.8s ease 0.3s both;
-  }
-
-  .advantage-card {
-    animation: fadeInUp 0.6s ease both;
-  }
-
-  .advantage-card:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .advantage-card:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .advantage-card:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-
-  .advantage-card:nth-child(4) {
-    animation-delay: 0.4s;
-  }
-
-  .advantages-title {
-    animation: fadeInUp 0.8s ease;
-  }
-
-  .reviews-carousel {
-    animation: fadeIn 0.8s ease;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  .carousel-slide {
-    animation: fadeIn 0.5s ease;
   }
 }
