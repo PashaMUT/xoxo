@@ -1,5 +1,5 @@
 // src/pages/PortfolioPage.tsx
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -18,9 +18,15 @@ import Photo11 from '../assets/portfolio/PB3.jpg';
 import {FaInstagram} from "react-icons/fa";
 
 
+
+
 const PortfolioPage: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState('Все работы');
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     // Массив работ (замените на ваши фото и описания)
     const portfolioItems = [

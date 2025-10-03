@@ -61,8 +61,8 @@ const ContactsPage: React.FC = () => {
                     <div className="contacts-map-section">
                         <h2>Адрес студии</h2>
                         <div className="address-card">
-                            <div className="address-icon">📍</div>
                             <div className="address-details">
+                                <div className="address-icon">📍</div>
                                 <h3>г. Светлогорск, ул. Спортивная, 11</h3>
                                 <p className="address-description">
                                     Студия расположена в центре города, в шаговой доступности от основных
