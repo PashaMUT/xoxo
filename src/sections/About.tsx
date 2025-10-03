@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AboutPh from '/src/assets/about.jpg'
+import AboutPh from '/src/assets/about.webp'
 
 
 const About: React.FC = () => {

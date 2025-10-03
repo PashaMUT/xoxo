@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 // Импортируйте ваши скриншоты отзывов
-import review1 from '../assets/reviews/review1.jpg';
-import review2 from '../assets/reviews/review2.jpg';
-import review3 from '../assets/reviews/review3.jpg';
-import review4 from '../assets/reviews/review4.jpg';
-import review5 from '../assets/reviews/review5.jpg';
-import review6 from '../assets/reviews/review6.jpg';
-import review7 from '../assets/reviews/review7.jpg';
+import review1 from '../assets/reviews/review1.webp';
+import review2 from '../assets/reviews/review2.webp';
+import review3 from '../assets/reviews/review3.webp';
+import review4 from '../assets/reviews/review4.webp';
+import review5 from '../assets/reviews/review5.webp';
+import review6 from '../assets/reviews/review6.webp';
+import review7 from '../assets/reviews/review7.webp';
 
 const Reviews: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(0);

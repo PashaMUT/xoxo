@@ -5,17 +5,17 @@ import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
 // Замените эти импорты на ваши реальные фото
-import Photo1 from '../assets/portfolio/L1.jpg';
-import Photo2 from '../assets/portfolio/L2.jpg';
-import Photo3 from '../assets/portfolio/PB1.jpg';
-import Photo4 from '../assets/portfolio/PB2.jpg';
-import Photo5 from '../assets/portfolio/PG1.jpg';
-import Photo6 from '../assets/portfolio/PG2.jpg';
-import Photo7 from '../assets/portfolio/T1.jpg';
-import Photo8 from '../assets/portfolio/T2.jpg';
-import Photo9 from '../assets/portfolio/T3.jpg';
-import Photo10 from '../assets/portfolio/T4.jpg';
-import Photo11 from '../assets/portfolio/PB3.jpg';
+import Photo1 from '../assets/portfolio/L1.webp';
+import Photo2 from '../assets/portfolio/L2.webp';
+import Photo3 from '../assets/portfolio/PB1.webp';
+import Photo4 from '../assets/portfolio/PB2.webp';
+import Photo5 from '../assets/portfolio/PG1.webp';
+import Photo6 from '../assets/portfolio/PG2.webp';
+import Photo7 from '../assets/portfolio/T1.webp';
+import Photo8 from '../assets/portfolio/T2.webp';
+import Photo9 from '../assets/portfolio/T3.webp';
+import Photo10 from '../assets/portfolio/T4.webp';
+import Photo11 from '../assets/portfolio/PB3.webp';
 import {FaInstagram} from "react-icons/fa";
 
 

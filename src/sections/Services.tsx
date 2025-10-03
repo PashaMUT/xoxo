@@ -3,7 +3,7 @@ import videoG from "../../public/videos/serviceG.mp4";
 import videoB from "../../public/videos/serviceB.mp4";
 import videoL from "../../public/videos/serviceL.mp4";
 import videoT from "../../public/videos/serviceT.mp4";
-import imgM from "../assets/services/serviceM.jpg"
+import imgM from "../assets/services/serviceM.webp"
 
 
 const Services: React.FC = () => {

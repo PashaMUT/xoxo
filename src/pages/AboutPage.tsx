@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import AboutPh from '../assets/about.jpg';
+import AboutPh from '../assets/about.webp';
 import SEO from '../components/SEO';
 
 const AboutPage: React.FC = () => {
