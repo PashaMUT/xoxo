@@ -44,25 +44,25 @@ const Services: React.FC = () => {
                     </div>
                 </div>
             </div>
-
             <div className="service-card">
                 <div className="service-content">
                     <div className="service-text-block">
-                        <h3 className="service-title">Ламинирование ресниц</h3>
+                        <h3 className="service-title">Перманент межреснички + стрелка</h3>
                         <p className="service-description">
-                            Пробуждение естественной красоты ваших ресниц. Технология ламинирования создает
-                            идеальный изгиб, придает объем и эффект "открытого взгляда" на 6-8 недель.
-                            Ваши ресницы всегда уложены безупречно, даже после умывания.
+                            Идеальная подводка, которая не смывается. Техника межресничного пространства
+                            создает эффект густых ресниц, а изящная стрелка придает взгляду выразительность
+                            и лёгкую загадочность. Просыпайтесь с безупречным макияжем каждый день.
                         </p>
                         <a href="https://ig.me/m/xoxo___brows" className="booking-button">
                             Записаться на процедуру
                         </a>
                     </div>
                     <div className="service-video-container">
-                        <video  src={videoL} autoPlay loop muted playsInline/>
+                        <img src={imgM}/>
                     </div>
                 </div>
             </div>
+
 
             <div className="service-card">
                 <div className="service-content reverse">
@@ -82,25 +82,25 @@ const Services: React.FC = () => {
                     </div>
                 </div>
             </div>
-
             <div className="service-card">
                 <div className="service-content">
                     <div className="service-text-block">
-                        <h3 className="service-title">Перманент межреснички + стрелка</h3>
+                        <h3 className="service-title">Ламинирование ресниц</h3>
                         <p className="service-description">
-                            Идеальная подводка, которая не смывается. Техника межресничного пространства
-                            создает эффект густых ресниц, а изящная стрелка придает взгляду выразительность
-                            и лёгкую загадочность. Просыпайтесь с безупречным макияжем каждый день.
+                            Пробуждение естественной красоты ваших ресниц. Технология ламинирования создает
+                            идеальный изгиб, придает объем и эффект "открытого взгляда" на 6-8 недель.
+                            Ваши ресницы всегда уложены безупречно, даже после умывания.
                         </p>
                         <a href="https://ig.me/m/xoxo___brows" className="booking-button">
                             Записаться на процедуру
                         </a>
                     </div>
                     <div className="service-video-container">
-                        <img src={imgM}/>
+                        <video  src={videoL} autoPlay loop muted playsInline/>
                     </div>
                 </div>
             </div>
+
         </section>
     );
 };
