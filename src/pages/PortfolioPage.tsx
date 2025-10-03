@@ -30,14 +30,14 @@ const PortfolioPage: React.FC = () => {
         { id: 4, image: Photo11, category: 'Брови', title: 'Перманент бровей', description: 'Идеальная форма' },
         { id: 5, image: Photo2, category: 'Ресницы', title: 'Ламинирование ресниц', description: 'Насыщенный цвет' },
         { id: 6, image: Photo7, category: 'Татуировка', title: 'Татуировка', description: 'Создание идеальной формы' },
-        { id: 7, image: Photo5, category: 'Перманент', title: 'Перманент губ', description: 'Естественный контур' },
+        { id: 7, image: Photo5, category: 'Губы', title: 'Перманент губ', description: 'Естественный контур' },
         { id: 8, image: Photo8, category: 'Татуировка', title: 'Татуировка', description: 'Стойкий результат' },
         { id: 9, image: Photo9, category: 'Татуировка', title: 'Татуировка', description: 'Техника микроблейдинга' },
-        { id: 10, image: Photo6, category: 'Перманент', title: 'Перманент губ', description: 'Естественная подводка' },
+        { id: 10, image: Photo6, category: 'Губы', title: 'Перманент губ', description: 'Естественная подводка' },
         { id: 11, image: Photo10, category: 'Татуировка', title: 'Татуировка', description: 'Естественная подводка' },
         ];
 
-    const categories = ['Все работы', 'Брови', 'Ресницы', 'Перманент'];
+    const categories = ['Все работы', 'Брови', 'Ресницы', 'Губы', 'Татуировка'];
 
     const filteredItems = selectedCategory === 'Все работы'
         ? portfolioItems
