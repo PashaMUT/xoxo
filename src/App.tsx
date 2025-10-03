@@ -1,5 +1,5 @@
 // src/App.tsx
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -14,6 +14,9 @@ import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
 
 const HomePage: React.FC = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div>
             <Intro/>
