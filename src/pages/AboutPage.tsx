@@ -81,6 +81,7 @@ const AboutPage: React.FC = () => {
                 canonical="https://xoxo.by/about"
             />
 
+
             {/* Структурированные данные для SEO */}
             <script
                 type="application/ld+json"

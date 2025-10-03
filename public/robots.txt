@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /about
+Allow: /services
+Allow: /portfolio
+Allow: /contacts
 Disallow: /api/
 
 Sitemap: https://xoxo.by/sitemap.xml

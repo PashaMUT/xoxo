@@ -56,6 +56,13 @@ const Footer: React.FC = () => {
                             </div>
                         </div>
 
+                        <div style={{display: 'none'}} aria-hidden="true">
+                            <a href="https://xoxo.by/about" title="О мастере перманентного макияжа Светлогорск">О мастере</a>
+                            <a href="https://xoxo.by/services" title="Услуги перманентного макияжа Светлогорск">Услуги и цены</a>
+                            <a href="https://xoxo.by/portfolio" title="Портфолио работ перманентного макияжа">Портфолио работ</a>
+                            <a href="https://xoxo.by/contacts" title="Контакты мастера перманента Светлогорск">Контакты</a>
+                        </div>
+
                         <div className="footer-social">
                             <div className="social-links">
                                 <a
