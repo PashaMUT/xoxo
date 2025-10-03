@@ -12,13 +12,49 @@ import AboutPage from "./pages/AboutPage";
 import ContactsPage from './pages/ContactsPage';
 import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
+import SEO from './components/SEO';
 
 const HomePage: React.FC = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
     return (
         <div>
+            <SEO
+                title="XOXO Brows - Перманентный макияж в Светлогорске | Татуаж бровей"
+                description="💫 Перманентный макияж в Светлогорске от опытного мастера. Татуаж бровей, губ, стрелок. Ламинирование ресниц. Запись онлайн. Гарантия качества."
+                keywords="перманентный макияж Светлогорск, перманент Светлогорск, татуаж бровей Светлогорск, перманент губ, ламинирование ресниц, мастер перманента Светлогорск"
+            />
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BeautySalon",
+                        "name": "XOXO Brows",
+                        "description": "Студия перманентного макияжа в Светлогорске",
+                        "url": "https://xoxo.by/",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Светлогорск",
+                            "addressCountry": "BY"
+                        },
+                        "openingHours": [
+                            "Mo-Fr 10:00-22:00",
+                            "Sa-Su 10:00-22:00"
+                        ],
+                        "priceRange": "$$",
+                        "serviceType": "Перманентный макияж, Ламинирование ресниц",
+                        "areaServed": "Светлогорск, Калинковичи, Жлобин, Речица",
+                        "sameAs": [
+                            "https://instagram.com/xoxo___brows"
+                        ]
+                    })
+                }}
+            />
+
             <Intro/>
             <Header />
             <Hero />

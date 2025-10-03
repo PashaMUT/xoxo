@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 // Замените эти импорты на ваши реальные фото
 import Photo1 from '../assets/portfolio/L1.jpg';
@@ -16,6 +17,7 @@ import Photo9 from '../assets/portfolio/T3.jpg';
 import Photo10 from '../assets/portfolio/T4.jpg';
 import Photo11 from '../assets/portfolio/PB3.jpg';
 import {FaInstagram} from "react-icons/fa";
+
 
 
 
@@ -56,27 +58,45 @@ const PortfolioPage: React.FC = () => {
     return (
         <div className="portfolio-page">
             {/* Структурированные данные для SEO */}
+            <SEO
+                title="Портфолио работ перманентного макияжа | Фото до и после | XOXO Brows"
+                description="📸 Галерея работ перманентного макияжа в Светлогорске. Реальные фото до и после татуажа бровей, губ, стрелок. Отзывы клиентов. Результаты процедур."
+                keywords="портфолио перманентного макияжа Светлогорск,перманент Светлогорск, фото работ татуажа, до и после перманента, примеры работ мастера, отзывы клиентов, галерея работ"
+                canonical="https://xoxo.by/portfolio"
+            />
+
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "CollectionPage",
-                        "name": "Портфолио - XOXO Brows",
-                        "description": "Фотографии работ мастера по перманентному макияжу, ламинированию бровей и ресниц в Светлогорске",
-                        "url": "https://xoxo.by/portfolio",
+                        "name": "Портфолио работ перманентного макияжа",
+                        "description": "Галерея работ мастера перманентного макияжа в Светлогорске",
                         "mainEntity": {
                             "@type": "ItemList",
-                            "itemListElement": portfolioItems.map((item, index) => ({
-                                "@type": "ListItem",
-                                "position": index + 1,
-                                "item": {
-                                    "@type": "CreativeWork",
-                                    "name": item.title,
-                                    "description": item.description,
-                                    "genre": item.category
+                            "name": "Работы перманентного макияжа",
+                            "numberOfItems": 50,
+                            "itemListElement": [
+                                {
+                                    "@type": "ListItem",
+                                    "position": 1,
+                                    "item": {
+                                        "@type": "ImageObject",
+                                        "name": "Перманентный макияж бровей - до и после",
+                                        "description": "Результат коррекции бровей методом перманентного макияжа"
+                                    }
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 2,
+                                    "item": {
+                                        "@type": "ImageObject",
+                                        "name": "Татуаж губ - результат",
+                                        "description": "Коррекция контура и цвета губ методом перманентного макияжа"
+                                    }
                                 }
-                            }))
+                            ]
                         }
                     })
                 }}

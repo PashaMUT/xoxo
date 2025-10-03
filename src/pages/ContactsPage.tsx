@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const ContactsPage: React.FC = () => {
     useEffect(() => {
@@ -9,30 +10,36 @@ const ContactsPage: React.FC = () => {
     return (
         <div className="contacts-page">
             {/* Структурированные данные для SEO */}
+            <SEO
+                title="Контакты мастера перманентного макияжа в Светлогорске | Запись онлайн"
+                description="📞 Контакты студии перманентного макияжа XOXO Brows в Светлогорске. Адрес, телефон, график работы. Запись на процедуры онлайн. Как добраться."
+                keywords="контакты мастера перманента Светлогорск, перманент Светлогорск запись на татуаж, адрес студии, телефон мастера, график работы, как добраться, связь с мастером"
+                canonical="https://xoxo.by/contacts"
+            />
+
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "BeautySalon",
-                        "name": "XOXO Brows - Студия красоты",
-                        "description": "Студия перманентного макияжа и ламинирования в Светлогорске",
-                        "url": "https://xoxo.by/contacts",
-                        "telephone": "+375291234567",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "streetAddress": "ул. Спортивная, 11",
-                            "addressLocality": "Светлогорск",
-                            "addressCountry": "BY"
-                        },
-                        "openingHours": [
-                            "Mo-Fr 09:00-20:00",
-                            "Sa 10:00-18:00"
-                        ],
-                        "geo": {
-                            "@type": "GeoCoordinates",
-                            "latitude": 52.6333,
-                            "longitude": 29.7333
+                        "@type": "ContactPage",
+                        "name": "Контакты",
+                        "description": "Контактная информация мастера перманентного макияжа в Светлогорске",
+                        "mainEntity": {
+                            "@type": "BeautySalon",
+                            "name": "XOXO Brows",
+                            "description": "Студия перманентного макияжа в Светлогорске",
+                            "address": {
+                                "@type": "PostalAddress",
+                                "streetAddress": "Ул. Спортивная, 11",
+                                "addressLocality": "Светлогорск",
+                                "addressCountry": "BY"
+                            },
+                            "openingHours": [
+                                "Mo-Fr 10:00-22:00",
+                                "Sa-Su 10:00-22:00"
+                            ],
+                            "url": "https://xoxo.by"
                         }
                     })
                 }}
