@@ -15,9 +15,7 @@ const Header: React.FC = () => {
     });
     const [isLoading, setIsLoading] = useState(false);
 
-    // 🔐 ЗАМЕНИТЕ ЭТИ ДАННЫЕ НА СВОИ!
-    const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN;
-    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID;
+
 
     const scrollToSection = (sectionId: string) => {
         if (!isHomePage) {
@@ -99,32 +97,22 @@ const Header: React.FC = () => {
         const cleanPhone = getCleanPhone(phone);
         const formattedPhone = `+${cleanPhone.slice(0, 3)} ${cleanPhone.slice(3, 5)} ${cleanPhone.slice(5, 8)}-${cleanPhone.slice(8, 10)}-${cleanPhone.slice(10, 12)}`;
 
-        const text = `
-🎯 НОВАЯ ЗАЯВКА С САЙТА!
-
-👤 Имя: ${name}
-📞 Телефон: ${formattedPhone}
-🌐 Страница: ${location.pathname}
-⏰ Время: ${new Date().toLocaleString('ru-RU')}
-
-💫 XOXO Brows - Светлогорск
-        `;
-
         try {
-            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            const response = await fetch('/api/telegram', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: text,
-                    parse_mode: 'HTML'
+                    name: name,
+                    phone: formattedPhone
                 })
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
-                throw new Error('Ошибка отправки');
+                throw new Error(data.error || 'Ошибка отправки');
             }
 
             return true;
