@@ -1351,9 +1351,9 @@ body {
 
 .category-btn {
   padding: 12px 24px;
-  border: 2px solid #f07f8a;
+  border: 2px solid #f06292;
   background: white;
-  color: #f07f8a;
+  color: #f06292;
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
@@ -1362,13 +1362,13 @@ body {
 }
 
 .category-btn:hover {
-  background: #f07f8a;
+  background: #f06292;
   color: white;
   transform: translateY(-2px);
 }
 
 .category-btn.active {
-  background: #f07f8a;
+  background: #f06292;
   color: white;
 }
 
