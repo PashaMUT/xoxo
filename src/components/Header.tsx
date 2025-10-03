@@ -16,8 +16,8 @@ const Header: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     // 🔐 ЗАМЕНИТЕ ЭТИ ДАННЫЕ НА СВОИ!
-    const BOT_TOKEN = '7393140884:AAGIbuNcuWbaafvYFX5x1XtFQ1H4wGc8kcY';
-    const CHAT_ID = '835627932L';
+    const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 
     const scrollToSection = (sectionId: string) => {
         if (!isHomePage) {
