@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
                         "serviceType": "Перманентный макияж, Ламинирование ресниц",
                         "areaServed": "Светлогорск, Калинковичи, Жлобин, Речица",
                         "sameAs": [
-                            "https://instagram.com/xoxo___brows"
+                            "https://instagram.com/x.o.x.o___brows"
                         ]
                     })
                 }}

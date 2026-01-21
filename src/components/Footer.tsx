@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
                             </div>
                             <div className="contact-item">
                                 <span className="contact-icon"><FaInstagram /></span>
-                                <span>xoxo___brows</span>
+                                <span>x.o.x.o___brows</span>
                             </div>
                         </div>
 
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
                         <div className="footer-social">
                             <div className="social-links">
                                 <a
-                                    href="https://instagram.com/xoxo___brows"
+                                    href="https://instagram.com/x.o.x.o___brows"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="social-link instagram"

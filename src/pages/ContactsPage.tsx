@@ -210,7 +210,7 @@ const ContactsPage: React.FC = () => {
                             <h3>Готовы к преображению?</h3>
                             <p>Запишитесь на процедуру и приходите в уютную студию на улице Спортивной, 11</p>
                             <a
-                                href="https://instagram.com/xoxo___brows"
+                                href="https://instagram.com/x.o.x.o___brows"
                                 className="booking-button large primary"
                                 target="_blank"
                                 rel="noopener noreferrer"

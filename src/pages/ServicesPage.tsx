@@ -291,7 +291,7 @@ const ServicesPage: React.FC = () => {
 
                                 <div className="procedure-footer">
                                     <a
-                                        href="https://instagram.com/xoxo___brows"
+                                        href="https://instagram.com/x.o.x.o___brows"
                                         className="booking-button"
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -321,14 +321,14 @@ const ServicesPage: React.FC = () => {
                                         contactButton.click();
                                     } else {
                                         // Fallback - открываем Instagram
-                                        window.open('https://instagram.com/xoxo___brows', '_blank');
+                                        window.open('https://instagram.com/x.o.x.o___brows', '_blank');
                                     }
                                 }}
                             >
                                 📱 Оставить заявку
                             </button>
                             <a
-                                href="https://instagram.com/xoxo___brows"
+                                href="https://instagram.com/x.o.x.o___brows"
                                 className="cta-button secondary"
                                 target="_blank"
                                 rel="noopener noreferrer"

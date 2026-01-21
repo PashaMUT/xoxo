@@ -52,7 +52,7 @@ const PortfolioPage: React.FC = () => {
         : portfolioItems.filter(item => item.category === selectedCategory);
 
     const openInstagram = () => {
-        window.open('https://instagram.com/xoxo___brows', '_blank');
+        window.open('https://instagram.com/x.o.x.o___brows', '_blank');
     };
 
     return (

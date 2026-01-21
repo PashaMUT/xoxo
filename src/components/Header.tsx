@@ -142,7 +142,7 @@ const Header: React.FC = () => {
 
                 if (confirmAlternative) {
                     const message = `Здравствуйте! Хочу записаться на процедуру.%0AИмя: ${telegramData.name}%0AТелефон: ${telegramData.phone}`;
-                    window.open(`https://t.me/xoxo___brows?text=${message}`, '_blank');
+                    window.open(`https://t.me/x.o.x.o___brows?text=${message}`, '_blank');
                 }
             }
         } catch (error) {
@@ -153,7 +153,7 @@ const Header: React.FC = () => {
     };
 
     const openInstagram = () => {
-        window.open('https://instagram.com/xoxo___brows', '_blank');
+        window.open('https://instagram.com/x.o.x.o___brows', '_blank');
         setIsContactPopupOpen(false);
     };
 
